@@ -23,19 +23,16 @@
 
 
 $( "#slider" ).slider({
-  min: 1913,
-  max: 1919,
+  min: 0,
+  max: 2099,
   step: 1,
-  value: [ 1913 ],
-  slide: function(event, ui){ $("#date").val(ui.value);
+  value: [ 0 ],
+  slide: function(event, ui){ $("#date").val(ui.value + "A.D.");
   }
 });
 
+$("#date").val( $( "#slider" ).slider( "value", 0) ); 
 
-
-</script>
-<script>
-  $(ui.value)
 </script>
 </body>
 </html>
