@@ -22,19 +22,23 @@
 <script>
 
 
-
-$( "#slider" ).slider({
-  min: new Date("1900").getFullYear(),
-  max: new Date("2019").getFullYear(),
-  step: 2,
-  value: [ new Date("1900").getTime() ],
-  slide: function(event, ui){
-  	console.log(new Date("" + $("#slider").slider("option", "value")))
-  	$('#date').text((new Date("" + $("#slider").slider("option", "value")).getFullYear()));
-  }
+$('document').ready( function(){
+  $( "#slider" ).slider({
+    min: new Date("1900").getFullYear(),
+    max: new Date("2019").getFullYear(),
+    step: 1,
+    value: new Date("1970").getFullYear(),
+    create: function(event, ui){
+      $('#date').text((new Date($("#slider").slider("option", "value")).getFullYear()));
+    },
+    slide: function(event, ui){
+      $('#date').text(ui.value);
+      console.log(ui.value);
+    }
+  });
 });
 
-//console.log($("#date").val( $( "#slider" ).slider( "value" ) )); 
+//console.log($("#date").val( $( "#slider" ).slider( "value" ) ));
 
 </script>
 </body>
