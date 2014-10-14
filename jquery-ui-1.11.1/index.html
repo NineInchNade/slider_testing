@@ -13,6 +13,7 @@
 <!-- Slider -->
 <h2 class="demoHeaders">Slider</h2>
 <div id="slider"></div>
+<p>Current Date: <span id="date"></span></p>
 
 
 
@@ -23,15 +24,17 @@
 
 
 $( "#slider" ).slider({
-  min: 0,
-  max: 2099,
-  step: 1,
-  value: [ 0 ],
-  slide: function(event, ui){ $("#date").val(ui.value + "A.D.");
+  min: new Date("1900").getFullYear(),
+  max: new Date("2019").getFullYear(),
+  step: 2,
+  value: [ new Date("1900").getTime() ],
+  slide: function(event, ui){
+  	console.log(new Date("" + $("#slider").slider("option", "value")))
+  	$('#date').text((new Date("" + $("#slider").slider("option", "value")).getFullYear()));
   }
 });
 
-$("#date").val( $( "#slider" ).slider( "value", 0) ); 
+//console.log($("#date").val( $( "#slider" ).slider( "value" ) )); 
 
 </script>
 </body>
